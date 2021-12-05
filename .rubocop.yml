@@ -19,3 +19,18 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 160
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/ContextWording:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
