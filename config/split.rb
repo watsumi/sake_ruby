@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 File.foreach("#{__dir__}/original_list.txt") do |line|
-  if line.match(/:roman:.*/)
-    @target = line.gsub(/:roman: /,'')
-    file = File.new("#{Dir.getwd}/lib/sake_ruby/tokuteimeisho/#{@target}.yml","a")
+  case line
+  when /:roman:.*/
+    @target = line.gsub(/:roman: /, "")
+    file = File.new("#{Dir.getwd}/lib/sake_ruby/tokuteimeisho/#{@target}.yml", "a")
     file.puts "---"
     file.puts line
     file.close
-  elsif line.match(/:tokuteimeisho:.*/) || line.match(/:raw_materials:.*/) || line.match(/:seimaibuai:.*/)
-    file = File.open("#{Dir.getwd}/lib/sake_ruby/tokuteimeisho/#{@target}.yml","a+")
+  when /:tokuteimeisho:.*/, /:raw_materials:.*/, /:seimaibuai:.*/
+    file = File.open("#{Dir.getwd}/lib/sake_ruby/tokuteimeisho/#{@target}.yml", "a+")
     file.puts line
     file.close
   end
