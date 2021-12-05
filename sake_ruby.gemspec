@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["watsumi"]
   spec.email = [""]
 
-  spec.summary = "Seach a sake information includes Tokuteimeishou, raw materials, Seimaibuai, Shubo and the number of Hiire."
+  spec.summary = "Seach a sake information includes Tokuteimeisho, raw materials and Seimaibuai."
   spec.homepage = "https://github.com/watsumi/sake_ruby/"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.2"
