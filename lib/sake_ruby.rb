@@ -2,6 +2,7 @@
 
 require_relative "sake_ruby/version"
 require "yaml"
+require "readline"
 
 module SakeRuby
   class NoTokuteimeishoError < StandardError; end
@@ -40,6 +41,29 @@ module SakeRuby
         |    精米歩合    | 規制なし |  70%以下 |   60%以下    |    50%以下   |
         ======================================================================
       MESSAGE
+    end
+
+    def challenge
+      question = select_random
+      puts "原材料: #{question[:raw_materials]}, 精米歩合: #{question[:seimaibuai]}"
+
+      stty_save = `stty -g`.chomp
+      begin
+        while answer = Readline.readline
+          if answer.eql?("降参")
+            puts "正解は、#{question[:tokuteimeisho]}でした。"
+            exit
+          elsif question[:tokuteimeisho].eql?(answer)
+            puts "===正解==="
+            challenge
+          else
+            puts "---不正解---"
+          end
+        end
+      rescue Interrupt
+        system("stty", stty_save)
+        exit
+      end
     end
 
     private
