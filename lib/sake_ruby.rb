@@ -44,25 +44,30 @@ module SakeRuby
     end
 
     def challenge
-      question = select_random
-      puts "原材料: #{question[:raw_materials]}, 精米歩合: #{question[:seimaibuai]}"
+      @question = select_random
+      puts "原材料: #{@question[:raw_materials]}, 精米歩合: #{@question[:seimaibuai]}"
 
       stty_save = `stty -g`.chomp
       begin
-        while answer = Readline.readline
-          if answer.eql?("降参")
-            puts "正解は、#{question[:tokuteimeisho]}でした。"
-            exit
-          elsif question[:tokuteimeisho].eql?(answer)
-            puts "===正解==="
-            challenge
-          else
-            puts "---不正解---"
-          end
-        end
+        check_answer
       rescue Interrupt
         system("stty", stty_save)
         exit
+      end
+    end
+
+    def check_answer
+      while answer = Readline.readline
+        case answer
+        when "降参"
+          puts "正解は、#{@question[:tokuteimeisho]}でした。"
+          exit
+        when @question[:tokuteimeisho]
+          puts "===正解==="
+          challenge
+        else
+          puts "---不正解---"
+        end
       end
     end
 

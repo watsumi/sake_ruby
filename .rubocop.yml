@@ -34,3 +34,10 @@ RSpec/ExampleLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+Metrics/MethodLength:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'lib/sake_ruby.rb'
