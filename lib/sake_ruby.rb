@@ -23,7 +23,7 @@ module SakeRuby
       tokuteimeishoshu
     end
 
-    def draw_table
+    def show_table
       puts <<~MESSAGE
         ======================================================================
         | 醸造アルコール |                      分類                         |
