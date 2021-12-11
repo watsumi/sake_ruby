@@ -55,6 +55,12 @@ module SakeRuby
         exit
       end
     end
+    
+    private
+    
+    def raise_no_tokuteimeisho_error!(tokuteimeisho)
+      raise NoTokuteimeishoError, "Can't find a #{tokuteimeisho}"
+    end
 
     def check_answer
       while answer = Readline.readline
@@ -69,12 +75,6 @@ module SakeRuby
           puts "---不正解---"
         end
       end
-    end
-
-    private
-
-    def raise_no_tokuteimeisho_error!(tokuteimeisho)
-      raise NoTokuteimeishoError, "Can't find a #{tokuteimeisho}"
     end
   end
 end
