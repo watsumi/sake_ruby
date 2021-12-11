@@ -55,9 +55,9 @@ module SakeRuby
         exit
       end
     end
-    
+
     private
-    
+
     def raise_no_tokuteimeisho_error!(tokuteimeisho)
       raise NoTokuteimeishoError, "Can't find a #{tokuteimeisho}"
     end
